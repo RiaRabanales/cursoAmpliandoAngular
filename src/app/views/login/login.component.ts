@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Usuario } from 'src/app/shared/classes/usuario';
@@ -10,7 +10,7 @@ import { TokenService } from 'src/app/shared/services/token.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   // Atributos
   public usuario: Usuario
 
@@ -21,17 +21,13 @@ export class LoginComponent implements OnInit {
     this.usuario = new Usuario();
   }
 
-  ngOnInit(): void {
-  }
-
   public submit(): void {
 
     this.loginService.login(this.usuario).subscribe(
       (data: number) => {
         this.tokenService.setToken(data);
-
+        //localStorage.setItem('tokenUsuario', this.usuario.token);
         localStorage.setItem('nombreUsuario', this.usuario.nombre);
-
         this.router.navigate(['/listado']);
       },
       (error: Error) => {

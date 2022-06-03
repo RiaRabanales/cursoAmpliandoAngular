@@ -17,7 +17,6 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.cargarUsuario();
   }
 
@@ -26,10 +25,6 @@ export class MenuComponent implements OnInit {
       this.nombreUsuario = localStorage.getItem('nombreUsuario');
     }
 
-    this.tokenService.token$.subscribe(
-      (data: number) => {
-        this.miToken = data;
-      }
-    )
+    this.tokenService.token$.subscribe( (data: number) => { this.miToken = data; })
   }
 }

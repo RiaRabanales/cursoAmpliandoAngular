@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Entrada } from 'src/app/shared/interfaces/entrada';
 
@@ -7,28 +7,20 @@ import { Entrada } from 'src/app/shared/interfaces/entrada';
   templateUrl: './entrada.component.html',
   styleUrls: ['./entrada.component.css']
 })
-export class EntradaComponent implements OnInit {
-  // Atributos
+export class EntradaComponent {
+  // Atributos con decoradores
   @Input()
   public entrada: Entrada;
   @Output()
-  public onDoEvent: EventEmitter<string>;
+  public doEvent: EventEmitter<string>;
 
   constructor() {
-    this.entrada = {
-      title: '',
-      body: '',
-      id: 1,
-      userId: 1
-    };
-    this.onDoEvent = new EventEmitter<string>();
+    this.entrada = { title: '', body: '', id: 1, userId: 1 };
+    this.doEvent = new EventEmitter<string>();
   }
 
-  ngOnInit(): void {
-  }
-
-  public doEvent(): void {
-    this.onDoEvent.emit(this.entrada.title);
+  public sendTitle(): void {
+    this.doEvent.emit(this.entrada.title as string);
   }
 
 }

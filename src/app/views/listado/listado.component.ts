@@ -17,7 +17,6 @@ export class ListadoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.listarEntradas();
   }
 
@@ -36,8 +35,8 @@ export class ListadoComponent implements OnInit {
     );
   }
 
-  public mostrarTitulo(titulo: string): void {
-    alert(`Entrada seleccionada: ${ titulo }.`);
+  public showTitle(titulo: string): void {
+    console.log(`Entrada seleccionada: ${ titulo }.`);
   }
 
 }
